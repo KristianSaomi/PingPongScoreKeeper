@@ -20,6 +20,8 @@ p1Button.addEventListener('click', function () {
             isGamerOver = true;
             p1Display.classList.add('winner');
             p2Display.classList.add('loser');
+            //Calling "function"  to disable the buttons.
+            disableButtons();
         }
         p1Display.textContent = p1Score;     
     }
@@ -37,7 +39,8 @@ p2Button.addEventListener('click', function () {
             isGamerOver = true;
             p2Display.classList.add('winner');
             p1Display.classList.add('loser');
-        
+            //Calling "function"  to disable the buttons.
+            disableButtons();
         }
         p2Display.textContent = p2Score;     
     }
@@ -63,6 +66,9 @@ function reset() {
     p2Display.textContent = 0;
     p1Display.classList.remove('winner','loser')
     p2Display.classList.remove('winner','loser')
+    //Enabling buttons once reset is called
+    p1Button.disabled = false;
+    p2Button.disabled = false;
 }
 
 //If wanted we can delete the "style in html"
@@ -71,3 +77,9 @@ And simply use Bulma colors, replace:
 "winner" with: has-text-sucess'
 "loser" with: has-text-danger
 */
+
+//Instead of replicating code, im creating a function to disable buttons
+function disableButtons() {
+    p1Button.disabled = true;
+    p2Button.disabled = true;
+}
